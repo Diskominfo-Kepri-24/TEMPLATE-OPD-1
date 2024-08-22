@@ -136,11 +136,33 @@ function Navbar() {
 
         <div className="relative navbar-item">
           <button
-            onClick={() => handleDropdownClick('programKegiatan')}
-            className={`font-medium focus:outline-none px-2 py-1 rounded transition-colors duration-300 ${activeDropdown === 'programKegiatan' ? 'bg-[#0075FF] text-white' : 'hover:bg-[#f0f0f0] hover:text-[#0075FF]'}`}
+            onClick={() => handleDropdownClick('Dokumen&Peraturan')}
+            className={`font-medium focus:outline-none px-2 py-1 rounded transition-colors duration-300 ${activeDropdown === 'Dokumen&Peraturan' ? 'bg-[#0075FF] text-white' : 'hover:bg-[#f0f0f0] hover:text-[#0075FF]'}`}
           >
             Dokumen & Peraturan
           </button>
+          {activeDropdown === 'Dokumen&Peraturan' && (
+            <div className="absolute left-0 mt-2 py-2 w-48 bg-white text-gray-900 rounded-lg shadow-lg z-10 transition-all duration-300 ease-in-out">
+              <a href="#" className="block px-4 py-2 hover:bg-[#0075FF] hover:text-white">
+                Perda APBD 2024
+              </a>
+              <a href="#" className="block px-4 py-2 hover:bg-[#0075FF] hover:text-white">
+                Perda APBD 2023
+              </a>
+              <a href="#" className="block px-4 py-2 hover:bg-[#0075FF] hover:text-white">
+                APBD Kepri 2022
+              </a>
+              <a href="#" className="block px-4 py-2 hover:bg-[#0075FF] hover:text-white">
+                Opini BPK RI 2023
+              </a>
+              <a href="#" className="block px-4 py-2 hover:bg-[#0075FF] hover:text-white">
+                Laporan IPKD
+              </a>
+              <a href="#" className="block px-4 py-2 hover:bg-[#0075FF] hover:text-white">
+                Produk Hukum (JDIH)
+              </a>
+            </div>
+          )}
         </div>
 
         <div className="relative navbar-item">
