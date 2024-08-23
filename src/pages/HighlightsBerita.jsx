@@ -17,7 +17,7 @@ function HighlightsBerita() {
   };
 
   useEffect(() => {
-    slideContainerRef.current.style.transform = `translateX(-${currentSlide * 80}%)`; // Mengatur agar slide berikutnya terlihat
+    slideContainerRef.current.style.transform = `translateX(-${currentSlide * 100}%)`; // Mengatur agar hanya satu slide penuh yang terlihat
   }, [currentSlide]);
 
   useEffect(() => {
@@ -51,97 +51,124 @@ function HighlightsBerita() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 pt-32 flex flex-col justify-center items-center">
-      {' '}
-      {/* Menggunakan pt-32 untuk padding top agar tidak tertutup navbar */}
-      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-3 gap-8 h-full">
-        {/* Bagian Highlights */}
-        <div ref={highlightsSectionRef} id="highlights-section" className="md:col-span-2 highlights transition-all duration-1000 ease-in-out opacity-0 translate-y-10 flex flex-col justify-center h-full">
-          <h2 className="text-4xl font-bold text-center mb-8">Highlights</h2>
-          <div className="relative overflow-hidden flex-grow">
-            <div ref={slideContainerRef} className="flex transition-transform duration-500 ease-in-out h-full">
+    <div className="min-h-screen bg-white text-gray-900 pt-36">
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div ref={highlightsSectionRef} id="highlights-section" className="md:col-span-2 highlights transition-all duration-1000 ease-in-out opacity-0 translate-y-10">
+          <h2 className="text-3xl font-bold text-center mb-6">Highlights</h2> {/* Reduced text size */}
+          <div className="relative overflow-hidden h-[450px]">
+            <div ref={slideContainerRef} className="flex transition-transform duration-500 ease-in-out">
               {/* Slide 1 */}
-              <div className="min-w-[80%] flex-shrink-0 bg-white rounded-lg shadow-md p-4 h-full">
-                <div className="h-full bg-gray-300 mb-4 flex items-center justify-center">
-                  <img src="/assets/babakbelur.jpeg" alt="Babak Belur" className="h-full w-full object-cover rounded-lg" />
-                </div>
-                <div className="text-center text-gray-700">
-                  <p>loremipsum loremipsum loremipsum</p>
-                  <p>loremipsum loremipsum loremipsum</p>
-                </div>
+              <div className="min-w-full flex-shrink-0 p-4">
+                <Link to="/babak-belur" className="block">
+                  <div className="rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:transform hover:scale-105 bg-white">
+                    <div className="h-[350px] bg-gray-300 flex items-center justify-center rounded-t-lg">
+                      <img src="/assets/babakbelur.jpeg" alt="Babak Belur" className="h-full w-full object-cover rounded-t-lg" />
+                    </div>
+                    <div className="p-3 text-center text-gray-700">
+                      {' '}
+                      {/* Reduced padding and text size */}
+                      <p className="text-sm">loremipsum loremipsum loremipsum</p> {/* Smaller text */}
+                      <p className="text-sm">loremipsum loremipsum loremipsum</p> {/* Smaller text */}
+                    </div>
+                  </div>
+                </Link>
               </div>
               {/* Slide 2 */}
-              <div className="min-w-[80%] flex-shrink-0 bg-white rounded-lg shadow-md p-4 h-full">
-                <div className="h-full bg-gray-300 mb-4 flex items-center justify-center">
-                  <img src="/assets/napibebas.jpeg" alt="Napi Bebas" className="h-full w-full object-cover rounded-lg" />
-                </div>
-                <div className="text-center text-gray-700">
-                  <p>loremipsum loremipsum loremipsum</p>
-                  <p>loremipsum loremipsum loremipsum</p>
-                </div>
+              <div className="min-w-full flex-shrink-0 p-4">
+                <Link to="/napi-bebas" className="block">
+                  <div className="rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:transform hover:scale-105 bg-white">
+                    <div className="h-[350px] bg-gray-300 flex items-center justify-center rounded-t-lg">
+                      <img src="/assets/napibebas.jpeg" alt="Napi Bebas" className="h-full w-full object-cover rounded-t-lg" />
+                    </div>
+                    <div className="p-3 text-center text-gray-700">
+                      {' '}
+                      {/* Reduced padding and text size */}
+                      <p className="text-sm">loremipsum loremipsum loremipsum</p> {/* Smaller text */}
+                      <p className="text-sm">loremipsum loremipsum loremipsum</p> {/* Smaller text */}
+                    </div>
+                  </div>
+                </Link>
               </div>
               {/* Slide 3 */}
-              <div className="min-w-[80%] flex-shrink-0 bg-white rounded-lg shadow-md p-4 h-full">
-                <div className="h-full bg-gray-300 mb-4 flex items-center justify-center">
-                  <img src="/assets/pilkada.jpeg" alt="Pilkada" className="h-full w-full object-cover rounded-lg" />
-                </div>
-                <div className="text-center text-gray-700">
-                  <p>loremipsum loremipsum loremipsum</p>
-                  <p>loremipsum loremipsum loremipsum</p>
-                </div>
+              <div className="min-w-full flex-shrink-0 p-4">
+                <Link to="/pilkada" className="block">
+                  <div className="rounded-lg shadow-lg transition-all duration-300 ease-in-out hover:shadow-2xl hover:transform hover:scale-105 bg-white">
+                    <div className="h-[350px] bg-gray-300 flex items-center justify-center rounded-t-lg">
+                      <img src="/assets/pilkada.jpeg" alt="Pilkada" className="h-full w-full object-cover rounded-t-lg" />
+                    </div>
+                    <div className="p-3 text-center text-gray-700">
+                      {' '}
+                      {/* Reduced padding and text size */}
+                      <p className="text-sm">loremipsum loremipsum loremipsum</p> {/* Smaller text */}
+                      <p className="text-sm">loremipsum loremipsum loremipsum</p> {/* Smaller text */}
+                    </div>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
           {/* Tombol Navigasi */}
           <div className="flex justify-center mt-8 space-x-4">
-            <button onClick={handlePrevClick} className="p-4 bg-blue-500 text-white rounded-full">
+            <button onClick={handlePrevClick} className="p-2 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600">
               ←
             </button>
-            <button onClick={handleNextClick} className="p-4 bg-blue-500 text-white rounded-full">
+            <button onClick={handleNextClick} className="p-2 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600">
               →
             </button>
           </div>
         </div>
 
         {/* Bagian Berita */}
-        <div ref={beritaSectionRef} className="berita transition-all duration-1000 ease-in-out opacity-0 translate-y-10 flex flex-col justify-center h-full">
-          <h2 className="text-4xl font-bold text-center mb-8">Berita</h2>
-          <div className="space-y-4 flex-grow">
+        <div ref={beritaSectionRef} className="berita transition-all duration-1000 ease-in-out opacity-0 translate-y-10">
+          <h2 className="text-3xl font-bold text-center mb-6">Berita</h2> {/* Reduced text size */}
+          <div className="space-y-3">
+            {' '}
+            {/* Reduced spacing */}
             {/* Berita 1 */}
-            <div className="flex items-center space-x-4 bg-white rounded-lg shadow-md p-4 transform transition-transform duration-500 ease-in-out hover:scale-105">
+            <div className="flex items-center space-x-4 bg-white rounded-lg shadow-md p-3 transform transition-transform duration-500 ease-in-out hover:scale-105">
+              {' '}
+              {/* Reduced padding */}
               <div className="h-16 w-16 bg-gray-300 flex items-center justify-center">gambar</div>
               <div>
-                <p className="text-gray-700">loremipsum loremipsum loremipsum</p>
-                <p className="text-sm text-gray-500">hari dan tanggal</p>
+                <p className="text-sm text-gray-700">loremipsum loremipsum loremipsum</p> {/* Smaller text */}
+                <p className="text-xs text-gray-500">hari dan tanggal</p> {/* Smaller text */}
               </div>
             </div>
             {/* Berita 2 */}
-            <div className="flex items-center space-x-4 bg-white rounded-lg shadow-md p-4 transform transition-transform duration-500 ease-in-out hover:scale-105">
+            <div className="flex items-center space-x-4 bg-white rounded-lg shadow-md p-3 transform transition-transform duration-500 ease-in-out hover:scale-105">
+              {' '}
+              {/* Reduced padding */}
               <div className="h-16 w-16 bg-gray-300 flex items-center justify-center">gambar</div>
               <div>
-                <p className="text-gray-700">loremipsum loremipsum loremipsum</p>
-                <p className="text-sm text-gray-500">hari dan tanggal</p>
+                <p className="text-sm text-gray-700">loremipsum loremipsum loremipsum</p> {/* Smaller text */}
+                <p className="text-xs text-gray-500">hari dan tanggal</p> {/* Smaller text */}
               </div>
             </div>
             {/* Berita 3 */}
-            <div className="flex items-center space-x-4 bg-white rounded-lg shadow-md p-4 transform transition-transform duration-500 ease-in-out hover:scale-105">
+            <div className="flex items-center space-x-4 bg-white rounded-lg shadow-md p-3 transform transition-transform duration-500 ease-in-out hover:scale-105">
+              {' '}
+              {/* Reduced padding */}
               <div className="h-16 w-16 bg-gray-300 flex items-center justify-center">gambar</div>
               <div>
-                <p className="text-gray-700">loremipsum loremipsum loremipsum</p>
-                <p className="text-sm text-gray-500">hari dan tanggal</p>
+                <p className="text-sm text-gray-700">loremipsum loremipsum loremipsum</p> {/* Smaller text */}
+                <p className="text-xs text-gray-500">hari dan tanggal</p> {/* Smaller text */}
               </div>
             </div>
             {/* Berita 4 */}
-            <div className="flex items-center space-x-4 bg-white rounded-lg shadow-md p-4 transform transition-transform duration-500 ease-in-out hover:scale-105">
+            <div className="flex items-center space-x-4 bg-white rounded-lg shadow-md p-3 transform transition-transform duration-500 ease-in-out hover:scale-105">
+              {' '}
+              {/* Reduced padding */}
               <div className="h-16 w-16 bg-gray-300 flex items-center justify-center">gambar</div>
               <div>
-                <p className="text-gray-700">loremipsum loremipsum loremipsum</p>
-                <p className="text-sm text-gray-500">hari dan tanggal</p>
+                <p className="text-sm text-gray-700">loremipsum loremipsum loremipsum</p> {/* Smaller text */}
+                <p className="text-xs text-gray-500">hari dan tanggal</p> {/* Smaller text */}
               </div>
             </div>
           </div>
           {/* Tombol Lihat Semua Berita */}
-          <div className="mt-8 text-center">
+          <div className="mt-6 text-center">
+            {' '}
+            {/* Reduced margin-top */}
             <Link to="/all-news" className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-800 transition-colors duration-300">
               Lihat Semua Berita
             </Link>
