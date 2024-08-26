@@ -44,32 +44,35 @@ function Pengumuman() {
   };
 
   return (
-    <div ref={sectionRef} id="pengumuman-section" className="min-h-screen bg-gray-50 text-gray-900 pt-28 pb-16">
-      {/* Header Section */}
-      <header className="p-8 shadow-md">
+    <div ref={sectionRef} id="pengumuman-section" className="min-h-screen bg-white text-gray-900 pt-28 pb-20">
+      <header className="p-12 shadow-md">
         <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-block w-full max-w-xl p-2 rounded-lg" style={{ backgroundColor: '#173D80' }}>
-            <h1 className="text-xl font-bold text-white">Pengumuman</h1>
-          </div>
-          <p className="mt-2 text-sm text-gray-600">Informasi dan Pengumuman Terkini di Provinsi Kepulauan Riau</p>
+          <h1 className="text-3xl md:text-4xl font-bold tracking-wide text-gray-800 relative inline-block">
+            {/* Underline menggunakan pseudo-element */}
+            <span className="relative">
+              Pengumuman
+              <span className="absolute bottom-0 left-0 w-full h-1 bg-blue-500 rounded-lg"></span>
+            </span>
+          </h1>
+          <p className="mt-4 text-lg text-gray-600">Informasi dan Pengumuman Terkini di Provinsi Kepulauan Riau</p>
         </div>
       </header>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="max-w-[90%] mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {announcements.map((announcement, index) => (
           <Link to={announcement.link} key={index}>
             <div
               onMouseDown={() => handleMouseDown(index)}
               onMouseUp={handleMouseUp}
-              className={`cursor-pointer bg-white rounded-lg shadow-lg p-6 transition-transform duration-500 ease-in-out ${isAnimated ? 'transform translate-y-0' : 'transform -translate-y-10'} ${
+              className={`cursor-pointer bg-white rounded-lg shadow-lg p-8 transition-transform duration-500 ease-in-out ${isAnimated ? 'transform translate-y-0' : 'transform -translate-y-10'} ${
                 clickedIndex === index ? 'bg-blue-500 text-white transform scale-105' : 'hover:scale-105 hover:shadow-xl'
-              }`} // Apply different styles if clicked
-              style={{ minHeight: '250px' }} // Ensuring all boxes have the same height
+              }`}
+              style={{ minHeight: '300px' }} // Ensuring all boxes have the same height and larger size
             >
-              <h2 className={`text-lg md:text-xl font-bold mb-2 ${clickedIndex === index ? 'text-white' : 'text-gray-900'}`}>{announcement.title}</h2>
-              <p className={`text-xs ${clickedIndex === index ? 'text-white' : 'text-gray-500'} mb-4`}>{announcement.date}</p>
-              <p className={`text-sm ${clickedIndex === index ? 'text-white' : 'text-gray-700'} mb-4`}>{announcement.text}</p>
+              <h2 className={`text-xl md:text-2xl font-bold mb-4 ${clickedIndex === index ? 'text-white' : 'text-gray-900'}`}>{announcement.title}</h2>
+              <p className={`text-sm ${clickedIndex === index ? 'text-white' : 'text-gray-500'} mb-6`}>{announcement.date}</p>
+              <p className={`text-lg ${clickedIndex === index ? 'text-white' : 'text-gray-700'} mb-6`}>{announcement.text}</p>
               <span className={`underline ${clickedIndex === index ? 'text-white' : 'text-blue-500'} hover:no-underline`}>Baca Selengkapnya</span>
             </div>
           </Link>
