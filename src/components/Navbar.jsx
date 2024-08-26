@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -7,6 +7,12 @@ function Navbar() {
   const [isScrolledToHighlights, setIsScrolledToHighlights] = useState(false);
   const [isScrolledToStatistics, setIsScrolledToStatistics] = useState(false);
   const [isScrolledToPengumuman, setIsScrolledToPengumuman] = useState(false);
+  const [isAtFooter, setIsAtFooter] = useState(false); // Untuk deteksi posisi scroll di footer
+
+  const location = useLocation(); // Menangkap lokasi halaman saat ini
+
+  // Deteksi jika halaman yang sedang dibuka adalah homepage
+  const isHomePage = location.pathname === '/';
 
   const handleDropdownClick = (dropdownName) => {
     setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
@@ -20,6 +26,7 @@ function Navbar() {
     const highlightsSection = document.getElementById('highlights-section');
     const statisticsSection = document.getElementById('statistics-section');
     const pengumumanSection = document.getElementById('pengumuman-section');
+    const footerSection = document.querySelector('footer'); // Deteksi posisi footer
     const navbarHeight = document.querySelector('nav').offsetHeight;
 
     if (highlightsSection) {
@@ -36,23 +43,56 @@ function Navbar() {
       const rect = pengumumanSection.getBoundingClientRect();
       setIsScrolledToPengumuman(rect.top <= navbarHeight && rect.bottom >= 0);
     }
+
+    // Deteksi jika pengguna berada di dekat atau di footer
+    if (footerSection) {
+      const rect = footerSection.getBoundingClientRect();
+      setIsAtFooter(rect.top <= window.innerHeight && rect.bottom >= 0);
+    }
   };
 
+  // Reset background saat kembali ke homepage
   useEffect(() => {
-    handleScroll();
-    window.addEventListener('scroll', handleScroll);
+    if (isHomePage) {
+      setIsScrolledToHighlights(false); // Reset status scroll saat kembali ke homepage
+      setIsScrolledToStatistics(false);
+      setIsScrolledToPengumuman(false);
+      window.scrollTo(0, 0); // Pindahkan scroll ke atas halaman saat kembali ke homepage
+    }
+  }, [isHomePage]);
+
+  useEffect(() => {
+    if (isHomePage) {
+      window.addEventListener('scroll', handleScroll);
+    } else {
+      window.removeEventListener('scroll', handleScroll);
+    }
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [isHomePage]);
 
-  const navbarBackgroundClass = isMobileMenuOpen ? 'bg-[#063970] text-white' : isScrolledToHighlights || isScrolledToStatistics || isScrolledToPengumuman ? 'bg-[#173D80] text-white shadow-lg' : 'bg-transparent text-white';
+  // Fungsi untuk scroll ke atas ketika "Beranda" diklik
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Pengaturan warna background navbar berdasarkan halaman dan kondisi scroll
+  const navbarBackgroundClass = isMobileMenuOpen
+    ? 'bg-[#063970] text-white'
+    : isHomePage
+    ? isScrolledToHighlights || isScrolledToStatistics || isScrolledToPengumuman || isAtFooter // Navbar biru di footer
+      ? 'bg-[#173D80] text-white shadow-lg'
+      : 'bg-transparent text-white'
+    : 'bg-[#173D80] text-white shadow-lg'; // Navbar biru untuk halaman selain homepage
 
   return (
     <nav className={`py-2 px-4 md:flex md:items-center md:justify-between w-full z-50 fixed top-0 left-0 right-0 transition-all duration-500 ease-in-out ${navbarBackgroundClass}`}>
       <div className="flex justify-between items-center w-full md:w-auto">
-        <img src="/assets/tulisan.png" alt="Logo" className="h-6 md:h-14 transition-all duration-500 ease-in-out" />
+        <Link to="/" onClick={scrollToTop}>
+          <img src="/assets/tulisan.png" alt="Logo" className="h-6 md:h-14 transition-all duration-500 ease-in-out" />
+        </Link>
         <button className="block md:hidden focus:outline-none" onClick={toggleMobileMenu}>
           <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
             {isMobileMenuOpen ? <path fillRule="evenodd" clipRule="evenodd" d="M6 18L18 6M6 6l12 12" /> : <path fillRule="evenodd" clipRule="evenodd" d="M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h16v2H4v-2z" />}
@@ -61,15 +101,14 @@ function Navbar() {
       </div>
 
       <div className={`md:flex md:items-center md:space-x-6 mt-4 md:mt-0 ${isMobileMenuOpen ? 'block' : 'hidden'} w-full md:w-auto`}>
+        {/* Beranda */}
         <div className="relative navbar-item">
-          <button
-            onClick={() => handleDropdownClick('beranda')}
-            className={`font-medium focus:outline-none px-2 py-1 rounded transition-colors duration-300 ${activeDropdown === 'beranda' ? 'bg-[#173D80] text-white' : 'hover:bg-[#f0f0f0] hover:text-[#173D80]'}`}
-          >
+          <Link to="/" className={`font-medium focus:outline-none px-2 py-1 rounded transition-colors duration-300 ${isHomePage ? 'bg-transparent text-white' : 'hover:bg-[#f0f0f0] hover:text-[#173D80]'}`} onClick={scrollToTop}>
             Beranda
-          </button>
+          </Link>
         </div>
 
+        {/* Pemerintahan */}
         <div className="relative navbar-item">
           <button
             onClick={() => handleDropdownClick('pemerintahan')}
@@ -98,6 +137,7 @@ function Navbar() {
           )}
         </div>
 
+        {/* Layanan */}
         <div className="relative navbar-item">
           <button
             onClick={() => handleDropdownClick('layanan')}
@@ -107,6 +147,7 @@ function Navbar() {
           </button>
         </div>
 
+        {/* Informasi Publik */}
         <div className="relative navbar-item">
           <button
             onClick={() => handleDropdownClick('informasiPublik')}
@@ -132,6 +173,7 @@ function Navbar() {
           )}
         </div>
 
+        {/* Dokumen & Peraturan */}
         <div className="relative navbar-item">
           <button
             onClick={() => handleDropdownClick('Dokumen&Peraturan')}
@@ -163,6 +205,7 @@ function Navbar() {
           )}
         </div>
 
+        {/* Gallery */}
         <div className="relative navbar-item">
           <button
             onClick={() => handleDropdownClick('gallery')}

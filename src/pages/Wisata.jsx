@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Wisata() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const slideRef = useRef(null);
-  const isTransitioning = useRef(false); // Gunakan useRef untuk mengontrol transisi tanpa memicu re-render
+  const isTransitioning = useRef(false);
 
   const wisataList = [
     { id: 1, title: 'Pantai Lagoi', imgSrc: '/assets/lagoi.jpeg', link: '/wisata-lagoi', location: 'Bintan, Kepulauan Riau' },
@@ -15,32 +15,28 @@ function Wisata() {
 
   const totalSlides = wisataList.length;
 
-  // Handle previous slide
   const handlePrevClick = () => {
-    if (isTransitioning.current) return; // Cegah pengaturan indeks saat transisi
+    if (isTransitioning.current) return;
     isTransitioning.current = true;
     setCurrentIndex((prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides);
   };
 
-  // Handle next slide
   const handleNextClick = () => {
-    if (isTransitioning.current) return; // Cegah pengaturan indeks saat transisi
+    if (isTransitioning.current) return;
     isTransitioning.current = true;
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
   };
 
   useEffect(() => {
-    // Reset transition state after animation completes
     const resetTransition = setTimeout(() => {
       isTransitioning.current = false;
-    }, 500); // Durasi animasi yang sesuai dengan `transition-duration`
+    }, 500);
 
     return () => clearTimeout(resetTransition);
   }, [currentIndex]);
 
   return (
     <div id="wisata-section" className="min-h-screen bg-gray-100 pt-16 pb-16">
-      {/* Header Section */}
       <header className="p-12">
         <div className="max-w-7xl mx-auto text-center">
           <div className="inline-block p-3 rounded-lg bg-[#173D80] shadow-xl">
