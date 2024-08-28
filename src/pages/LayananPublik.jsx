@@ -16,17 +16,17 @@ function LayananPublik() {
         {
           title: 'Permohonan Informasi',
           description: 'Sampaikan permohonan informasi secara online dengan baik dan benar',
-          icon: '/path/to/icon1.png', // Replace with actual path
+          icon: '/assets/logo.png', // Replace with actual path
         },
         {
           title: 'Daftar Informasi Publik',
           description: 'Lihat daftar Instansi tujuan atau PPID Pelaksana di Provinsi Kepulauan Riau',
-          icon: '/path/to/icon2.png',
+          icon: '/assets/logo.png',
         },
         {
           title: 'Daftar PPID Pelaksana',
           description: 'Harap cek daftar informasi sebelum mengajukan permintaan informasi',
-          icon: '/path/to/icon3.png',
+          icon: '/assets/logo.png',
         },
       ],
     },
@@ -36,32 +36,32 @@ function LayananPublik() {
         {
           title: 'SIMANJA Kepri',
           description: 'Sistem Informasi Manajemen Kinerja Pemerintah Provinsi Kepulauan Riau',
-          icon: '/path/to/icon4.png',
+          icon: '/assets/bintan.png',
         },
         {
           title: 'SIAP Kepri',
           description: 'Sistem Informasi Aktivitas Presensi Pemerintah Provinsi Kepulauan Riau',
-          icon: '/path/to/icon5.png',
+          icon: '/assets/bintan.png',
         },
         {
           title: 'SIAAPE Kepri',
           description: 'Sistem Aplikasi Administrasi Pemerintahan Elektronik Provinsi Kepulauan Riau',
-          icon: '/path/to/icon6.png',
+          icon: '/assets/bintan.png',
         },
         {
           title: 'SIJABAT Kepri',
           description: 'Sistem Informasi Jabatan di Pemerintahan Provinsi Kepulauan Riau',
-          icon: '/path/to/icon7.png',
+          icon: '/assets/bintan.png',
         },
         {
           title: 'Si-Desi Kepri',
           description: 'Sistem Informasi Helpdesk Pemerintah Provinsi Kepulauan Riau',
-          icon: '/path/to/icon8.png',
+          icon: '/assets/bintan.png',
         },
         {
           title: 'Tanda Tangan Elektronik (TTE)',
           description: 'Tanda Tangan Elektronik (TTE) Aparatur Sipil Negara (ASN)',
-          icon: '/path/to/icon9.png',
+          icon: '/assets/bintan.png',
         },
       ],
     },
@@ -69,9 +69,29 @@ function LayananPublik() {
       category: 'Pelayanan Masyarakat Berbasis Elektronik',
       services: [
         {
-          title: 'Layanan Elektronik',
+          title: 'LPSE Kepri',
+          description: 'Layanan Pengadaan Secara Elektronik di Provinsi Kepulauan Riau',
+          icon: '/assets/tanjungpinang.png',
+        },
+        {
+          title: 'SiRUP Versi 4',
+          description: 'Sistem Informasi Umum Pengadaan',
+          icon: '/assets/tanjungpinang.png',
+        },
+        {
+          title: 'Toko Daring LKPP',
           description: 'Pelayanan masyarakat secara online untuk kemudahan akses informasi dan layanan',
-          icon: '/path/to/icon10.png',
+          icon: '/assets/tanjungpinang.png',
+        },
+        {
+          title: 'Gema Ekraf Kepri',
+          description: 'Pelayanan masyarakat secara online untuk kemudahan akses informasi dan layanan',
+          icon: '/assets/tanjungpinang.png',
+        },
+        {
+          title: 'SIP MTQ Kepri',
+          description: 'Pelayanan masyarakat secara online untuk kemudahan akses informasi dan layanan',
+          icon: '/assets/tanjungpinang.png',
         },
         // Add more services here if needed
       ],
@@ -79,7 +99,7 @@ function LayananPublik() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
 
       <div className={`pt-24 pb-8 px-8 transition-opacity duration-1000 ease-out ${isMounted ? 'opacity-100' : 'opacity-0'}`}>
@@ -87,13 +107,13 @@ function LayananPublik() {
 
         {layananList.map((category, index) => (
           <div key={index} className="mb-12">
-            <h2 className="text-xl font-semibold text-gray-700 mb-6">{category.category}</h2>
+            <h2 className="text-xl font-semibold text-gray-800 mb-6">{category.category}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {category.services.map((service, idx) => (
                 <div key={idx} className="flex items-center p-4 rounded-lg shadow-md bg-white hover:bg-gray-100 transition-transform transform hover:scale-105">
                   <img src={service.icon} alt={`${service.title} icon`} className="w-16 h-16 object-contain mr-4" />
                   <div>
-                    <h3 className="text-md font-semibold text-gray-700">{service.title}</h3>
+                    <h3 className="text-md font-semibold text-gray-800">{service.title}</h3>
                     <p className="text-sm text-gray-600">{service.description}</p>
                   </div>
                 </div>
@@ -101,6 +121,17 @@ function LayananPublik() {
             </div>
           </div>
         ))}
+
+        {/* New Lapor Box Section */}
+        <div className="flex justify-center items-center mt-12">
+          <div className="w-full max-w-4xl p-8 bg-white text-center rounded-lg shadow-lg border border-gray-200">
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">Punya Keluhan Terhadap Layanan Pemerintah Kepri?</h2>
+            <p className="text-gray-600 mb-6">Sampaikan aspirasi dan pengaduan Anda tentang layanan publik di Pemerintah Provinsi Kepulauan Riau.</p>
+            <a href="https://kepri.lapor.go.id" target="_blank" rel="noopener noreferrer" className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+              LAPOR SEKARANG
+            </a>
+          </div>
+        </div>
       </div>
 
       <Footer />

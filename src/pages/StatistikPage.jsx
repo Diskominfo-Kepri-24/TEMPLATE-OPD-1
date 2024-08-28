@@ -54,7 +54,7 @@ function StatistikPage() {
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Statistik Sektoral Provinsi Kepulauan Riau Tahun 2023</h2>
           <div className="flex">
             <div className="w-1/3">
-              <img src="/path/to/your/image.jpg" alt="Statistik Sektoral" className="rounded-lg shadow-sm" />
+              <img src="/assets/statistik.png" alt="Statistik Sektoral" className="rounded-lg shadow-sm" />
             </div>
             <div className="w-2/3 pl-4 md:pl-6">
               <p className="text-base text-gray-600">Oleh: Dinas Komunikasi dan Informatika Kepri</p>
@@ -80,7 +80,7 @@ function StatistikPage() {
             {/* First item - Statistik Ekspor */}
             <div className="flex items-center space-x-4 bg-white rounded-lg shadow-md p-4 transform transition-transform duration-500 ease-in-out hover:scale-105">
               <div className="h-16 w-16 bg-gray-300 flex items-center justify-center rounded-md">
-                <img src="/path/to/your/another-image.jpg" alt="Statistik Ekspor" className="rounded-md object-cover" />
+                <img src="/assets/statistik.png" alt="Statistik Ekspor" className="rounded-md object-cover" />
               </div>
               <div>
                 <p className="text-base text-gray-700">Statistik Ekspor Provinsi Kepulauan Riau 2023</p>
@@ -94,7 +94,7 @@ function StatistikPage() {
             {/* Second item - Hasil Pencacahan */}
             <div className="flex items-center space-x-4 bg-white rounded-lg shadow-md p-4 transform transition-transform duration-500 ease-in-out hover:scale-105">
               <div className="h-16 w-16 bg-gray-300 flex items-center justify-center rounded-md">
-                <img src="/path/to/your/another-image.jpg" alt="Hasil Pencacahan" className="rounded-md object-cover" />
+                <img src="/assets/statistik.png" alt="Hasil Pencacahan" className="rounded-md object-cover" />
               </div>
               <div>
                 <p className="text-base text-gray-700">Hasil Pencacahan Lengkap Sensus Pertanian 2023</p>
@@ -108,7 +108,7 @@ function StatistikPage() {
             {/* Third item */}
             <div className="flex items-center space-x-4 bg-white rounded-lg shadow-md p-4 transform transition-transform duration-500 ease-in-out hover:scale-105">
               <div className="h-16 w-16 bg-gray-300 flex items-center justify-center rounded-md">
-                <img src="/path/to/your/another-image.jpg" alt="Statistik Ekspor" className="rounded-md object-cover" />
+                <img src="/assets/statistik.png" alt="Statistik Ekspor" className="rounded-md object-cover" />
               </div>
               <div>
                 <p className="text-base text-gray-700">Indikator Utama Provinsi Kepulauan Riau</p>
