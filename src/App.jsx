@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Ga
 import HomePage from './pages/HomePages';
 import Sejarah from './pages/Sejarah';
 import VisiMisi from './pages/VisiMisi';
+import Agenda from './pages/Agenda';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<HomePage />} /> {/* Ganti component dengan element */}
         <Route path="/sejarah" element={<Sejarah />} />
         <Route path="/visi-misi" element={<VisiMisi />} />
+        <Route path="/agenda" element={<Agenda />} />
       </Routes>
     </Router>
   );

@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activeSubDropdown, setActiveSubDropdown] = useState(null); // Untuk subdropdown Kepala Daerah
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolledToHighlights, setIsScrolledToHighlights] = useState(false);
   const [isScrolledToStatistics, setIsScrolledToStatistics] = useState(false);
   const [isScrolledToPengumuman, setIsScrolledToPengumuman] = useState(false);
   const [isAtFooter, setIsAtFooter] = useState(false); // Untuk deteksi posisi scroll di footer
+  const dropdownRef = useRef(null); // Ref untuk mendeteksi klik di luar dropdown
 
   const location = useLocation(); // Menangkap lokasi halaman saat ini
 
@@ -16,6 +18,11 @@ function Navbar() {
 
   const handleDropdownClick = (dropdownName) => {
     setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
+    setActiveSubDropdown(null); // Tutup subdropdown jika dropdown lain diklik
+  };
+
+  const handleSubDropdownClick = (subDropdownName) => {
+    setActiveSubDropdown(activeSubDropdown === subDropdownName ? null : subDropdownName);
   };
 
   const toggleMobileMenu = () => {
@@ -73,6 +80,21 @@ function Navbar() {
     };
   }, [isHomePage]);
 
+  // Deteksi klik di luar dropdown untuk menutupnya
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setActiveDropdown(null);
+        setActiveSubDropdown(null); // Tutup subdropdown juga
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   // Fungsi untuk scroll ke atas ketika "Beranda" diklik
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -100,16 +122,20 @@ function Navbar() {
         </button>
       </div>
 
-      <div className={`md:flex md:items-center md:space-x-6 mt-4 md:mt-0 ${isMobileMenuOpen ? 'block' : 'hidden'} w-full md:w-auto`}>
+      <div ref={dropdownRef} className={`md:flex md:items-center md:space-x-6 mt-4 md:mt-0 ${isMobileMenuOpen ? 'block' : 'hidden'} w-full md:w-auto`}>
         {/* Beranda */}
-        <div className="relative navbar-item">
+        <div className="relative navbar-item ml-2">
+          {' '}
+          {/* Menambahkan margin kiri */}
           <Link to="/" className={`font-medium focus:outline-none px-2 py-1 rounded transition-colors duration-300 ${isHomePage ? 'bg-transparent text-white' : 'hover:bg-[#f0f0f0] hover:text-[#173D80]'}`} onClick={scrollToTop}>
             Beranda
           </Link>
         </div>
 
         {/* Pemerintahan */}
-        <div className="relative navbar-item">
+        <div className="relative navbar-item ml-2">
+          {' '}
+          {/* Menambahkan margin kiri */}
           <button
             onClick={() => handleDropdownClick('pemerintahan')}
             className={`font-medium focus:outline-none px-2 py-1 rounded transition-colors duration-300 ${activeDropdown === 'pemerintahan' ? 'bg-[#173D80] text-white' : 'hover:bg-[#f0f0f0] hover:text-[#173D80]'}`}
@@ -124,36 +150,67 @@ function Navbar() {
               <Link to="/visi-misi" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
                 Visi dan Misi
               </Link>
-              <Link to="/logo" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
-                Logo
-              </Link>
               <Link to="/perangkat-daerah" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
                 Perangkat Daerah
               </Link>
-              <Link to="/kepala-daerah" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
-                Kepala Daerah
-              </Link>
+              <div className="relative">
+                <button onClick={() => handleSubDropdownClick('kepala-daerah')} className="block w-full text-left px-4 py-2 hover:bg-[#173D80] hover:text-white">
+                  Kepala Daerah <span className="ml-1">▶</span>
+                </button>
+                {activeSubDropdown === 'kepala-daerah' && (
+                  <div className="absolute left-full top-0 mt-0 ml-2 py-2 w-48 bg-white text-gray-900 rounded-lg shadow-lg z-10 transition-transform transform origin-top-left scale-95 hover:scale-100 ease-in-out">
+                    <Link to="/asisten-sekretaris" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
+                      Asisten Sekretaris Daerah
+                    </Link>
+                    <Link to="/staf-ahli" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
+                      Staf Ahli
+                    </Link>
+                    <Link to="/tim-percepatan" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
+                      Tim Percepatan Pembangunan
+                    </Link>
+                    <Link to="/kepala-opd" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
+                      Kepala OPD
+                    </Link>
+                    <Link to="/ketua-dprd" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
+                      Ketua DPRD
+                    </Link>
+                    <Link to="/gubernur" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
+                      Gubernur
+                    </Link>
+                    <Link to="/wakil-gubernur" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
+                      Wakil Gubernur
+                    </Link>
+                    <Link to="/sekretaris-daerah" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
+                      Sekretaris Daerah
+                    </Link>
+                  </div>
+                )}
+              </div>
             </div>
           )}
         </div>
 
-        {/* Layanan */}
-        <div className="relative navbar-item">
+        {/* Layanan Publik */}
+        <div className="relative navbar-item ml-2">
+          {' '}
+          {/* Menambahkan margin kiri */}
           <button
             onClick={() => handleDropdownClick('layanan')}
             className={`font-medium focus:outline-none px-2 py-1 rounded transition-colors duration-300 ${activeDropdown === 'layanan' ? 'bg-[#173D80] text-white' : 'hover:bg-[#f0f0f0] hover:text-[#173D80]'}`}
           >
-            Layanan
+            Layanan Publik
           </button>
         </div>
 
         {/* Informasi Publik */}
-        <div className="relative navbar-item">
+        <div className="relative navbar-item ml-2">
+          {' '}
+          {/* Menambahkan margin kiri */}
           <button
             onClick={() => handleDropdownClick('informasiPublik')}
             className={`font-medium focus:outline-none px-2 py-1 rounded transition-colors duration-300 ${activeDropdown === 'informasiPublik' ? 'bg-[#173D80] text-white' : 'hover:bg-[#f0f0f0] hover:text-[#173D80]'}`}
           >
-            Informasi Publik
+            Publikasi
           </button>
           {activeDropdown === 'informasiPublik' && (
             <div className="absolute left-0 mt-2 py-2 w-48 bg-white text-gray-900 rounded-lg shadow-lg z-10 transition-all duration-300 ease-in-out">
@@ -174,7 +231,9 @@ function Navbar() {
         </div>
 
         {/* Dokumen & Peraturan */}
-        <div className="relative navbar-item">
+        <div className="relative navbar-item ml-2">
+          {' '}
+          {/* Menambahkan margin kiri */}
           <button
             onClick={() => handleDropdownClick('Dokumen&Peraturan')}
             className={`font-medium focus:outline-none px-2 py-1 rounded transition-colors duration-300 ${activeDropdown === 'Dokumen&Peraturan' ? 'bg-[#173D80] text-white' : 'hover:bg-[#f0f0f0] hover:text-[#173D80]'}`}
@@ -204,15 +263,31 @@ function Navbar() {
             </div>
           )}
         </div>
-
         {/* Gallery */}
-        <div className="relative navbar-item">
+        <div className="relative navbar-item ml-2">
+          {' '}
+          {/* Menambahkan margin kiri */}
           <button
             onClick={() => handleDropdownClick('gallery')}
             className={`font-medium focus:outline-none px-2 py-1 rounded transition-colors duration-300 ${activeDropdown === 'gallery' ? 'bg-[#173D80] text-white' : 'hover:bg-[#f0f0f0] hover:text-[#173D80]'}`}
           >
             Gallery
           </button>
+          {activeDropdown === 'gallery' && (
+            <div className="absolute right-0 mt-2 py-2 w-48 bg-white text-gray-900 rounded-lg shadow-lg z-10">
+              {' '}
+              {/* right-0 agar dropdown tidak keluar dari layar */}
+              <Link to="/foto-video" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
+                Foto & Video
+              </Link>
+              <Link to="/aset-multimedia" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
+                Aset Multimedia
+              </Link>
+              <Link to="/ai-kepri" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
+                AI Kepri
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </nav>
