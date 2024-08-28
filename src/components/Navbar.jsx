@@ -192,16 +192,10 @@ function Navbar() {
 
         {/* Layanan Publik */}
         <div className="relative navbar-item ml-2">
-          {' '}
-          {/* Menambahkan margin kiri */}
-          <button
-            onClick={() => handleDropdownClick('layanan')}
-            className={`font-medium focus:outline-none px-2 py-1 rounded transition-colors duration-300 ${activeDropdown === 'layanan' ? 'bg-[#173D80] text-white' : 'hover:bg-[#f0f0f0] hover:text-[#173D80]'}`}
-          >
-            Layanan Publik
-          </button>
+          <Link to="/layanan-publik">
+            <button className="font-medium focus:outline-none px-2 py-1 rounded transition-colors duration-300 hover:bg-[#f0f0f0] hover:text-[#173D80]">Layanan Publik</button>
+          </Link>
         </div>
-
         {/* Informasi Publik */}
         <div className="relative navbar-item ml-2">
           {' '}

@@ -1,19 +1,21 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Ganti Switch dengan Routes
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePages';
 import Sejarah from './pages/Sejarah';
 import VisiMisi from './pages/VisiMisi';
 import Agenda from './pages/Agenda';
+import PerangkatDaerah from './pages/PerangkatDaerah';
+import LayananPublik from './pages/LayananPublik';
 
 function App() {
   return (
     <Router>
       <Routes>
-        {' '}
-        {/* Ganti Switch menjadi Routes */}
-        <Route path="/" element={<HomePage />} /> {/* Ganti component dengan element */}
+        <Route path="/" element={<HomePage />} />
         <Route path="/sejarah" element={<Sejarah />} />
         <Route path="/visi-misi" element={<VisiMisi />} />
         <Route path="/agenda" element={<Agenda />} />
+        <Route path="/perangkat-daerah" element={<PerangkatDaerah />} />
+        <Route path="/layanan-publik" element={<LayananPublik />} />
       </Routes>
     </Router>
   );
