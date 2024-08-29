@@ -83,7 +83,7 @@ function PerangkatDaerah() {
                 rel="noopener noreferrer"
                 className={`flex items-center p-3 rounded-lg shadow-lg transition-transform transform ${isMounted ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} duration-1000 delay-${index * 200} cursor-pointer ${
                   daerah.color
-                } hover:scale-105 bg-white`}
+                }`}
               >
                 <img src={daerah.image} alt={`${daerah.name} logo`} className="w-12 h-12 object-contain mr-3" />
                 <h2 className="text-md font-semibold text-gray-700 text-left">{daerah.name}</h2>
@@ -94,12 +94,15 @@ function PerangkatDaerah() {
 
         {/* OPD Provinsi Kepulauan Riau Section */}
         <div className="bg-white p-8 rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold text-center mb-12 text-gray-800">OPD Provinsi Kepulauan Riau</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h1 className={`text-3xl font-bold text-center mb-12 text-gray-800 transition-transform transform ${isMounted ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'} duration-1000`}>OPD Provinsi Kepulauan Riau</h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {opdList.map((opd, index) => (
-              <div key={index} className="flex flex-col items-center p-4 rounded-lg shadow-md bg-white hover:bg-gray-100 transition-transform transform hover:scale-105">
-                <img src={opd.icon} alt={`${opd.title} icon`} className="w-12 h-12 object-contain mb-4" />
-                <h3 className="text-sm font-semibold text-gray-700 text-center">{opd.title}</h3>
+              <div
+                key={index}
+                className={`flex items-center p-3 bg-white rounded-lg shadow-lg transition-transform transform ${isMounted ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} duration-1000 delay-${index * 200} cursor-pointer`}
+              >
+                <img src={opd.icon} alt={`${opd.title} icon`} className="w-12 h-12 object-contain mr-3" />
+                <h2 className="text-md font-semibold text-gray-700 text-left">{opd.title}</h2>
               </div>
             ))}
           </div>
