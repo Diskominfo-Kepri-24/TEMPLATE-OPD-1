@@ -37,9 +37,7 @@ function Agenda() {
     };
   }, []);
 
-  const months = [
-    'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-  ];
+  const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 
   const years = ['2024', '2023', '2022'];
 
@@ -170,7 +168,7 @@ function Agenda() {
               <Link to="/">Beranda</Link> &bull;
               <span>&nbsp;Event & Agenda</span>
             </nav>
-            <h1 className="text-4xl font-extrabold text-gray-800 mt-4">Event & Agenda</h1>
+            <h1 className={`text-4xl font-extrabold text-gray-800 mt-4 transition-transform transform ${isMounted ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'} duration-1000`}>Event & Agenda</h1>
           </div>
 
           <div className={`bg-white shadow-lg rounded-lg p-8 transition-transform duration-700 ease-in-out ${isAnimated ? 'transform translate-y-0' : 'transform -translate-y-10'}`}>

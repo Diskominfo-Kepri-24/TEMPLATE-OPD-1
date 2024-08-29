@@ -67,9 +67,7 @@ function Statistics() {
   const pathnames = location.pathname.split('/').filter((x) => x);
 
   // Filter publications based on search term
-  const filteredPublications = publications.filter((pub) =>
-    pub.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredPublications = publications.filter((pub) => pub.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
     <>
@@ -118,24 +116,14 @@ function Statistics() {
                 {filteredPublications.length > 0 ? (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {filteredPublications.map((pub, index) => (
-                      <div
-                        key={index}
-                        className="flex flex-col bg-gray-100 p-4 rounded-lg hover:shadow-md transition-shadow duration-300 ease-in-out"
-                      >
+                      <div key={index} className="flex flex-col bg-gray-100 p-4 rounded-lg hover:shadow-md transition-shadow duration-300 ease-in-out">
                         <div className="w-full h-48 mb-4">
-                          <img
-                            src={pub.image}
-                            alt={pub.title}
-                            className="w-full h-full object-cover rounded-md"
-                          />
+                          <img src={pub.image} alt={pub.title} className="w-full h-full object-cover rounded-md" />
                         </div>
                         <h3 className="text-lg font-semibold text-gray-800">{pub.title}</h3>
                         <p className="text-sm text-gray-600">Tanggal Rilis: {pub.date}</p>
                         <p className="text-sm text-gray-600">Ukuran File: {pub.size}</p>
-                        <a
-                          href={pub.link}
-                          className="text-green-600 hover:text-green-800 text-sm font-medium mt-2"
-                        >
+                        <a href={pub.link} className="text-green-600 hover:text-green-800 text-sm font-medium mt-2">
                           Unduh Publikasi
                         </a>
                       </div>

@@ -194,7 +194,7 @@ function HighlightsBerita() {
           <div className="mt-8 text-center">
             {' '}
             {/* Tambahkan margin lebih besar */}
-            <Link to="/all-news" className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-800 transition-colors duration-300">
+            <Link to="/berita" className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-800 transition-colors duration-300">
               {' '}
               {/* Perbesar tombol */}
               Lihat Semua Berita

@@ -20,7 +20,6 @@ function App() {
         <Route path="/sejarah" element={<Sejarah />} />
         <Route path="/visi-misi" element={<VisiMisi />} />
         <Route path="/agenda" element={<Agenda />} />
-        <Route path="/detailstatistik" element={<DetailStatistik />} />
         <Route path="/perangkat-daerah" element={<PerangkatDaerah />} />
         <Route path="/layanan-publik" element={<LayananPublik />} />
         <Route path="/berita" element={<Berita />} />

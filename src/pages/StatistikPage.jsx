@@ -120,7 +120,7 @@ function StatistikPage() {
               </div>
             </div>
             <div className="mx-auto text-center">
-              <Link to="/download-link" className="mt-12 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition-colors duration-300 text-lg" style={{ backgroundColor: '#173D80' }}>
+              <Link to="/detailstatistik" className="mt-12 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition-colors duration-300 text-lg" style={{ backgroundColor: '#173D80' }}>
                 Lihat Statistik Lainnya
               </Link>
             </div>
