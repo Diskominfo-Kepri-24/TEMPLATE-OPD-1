@@ -1,24 +1,25 @@
+/* eslint-disable-next-line no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [activeSubDropdown, setActiveSubDropdown] = useState(null); // Untuk subdropdown Kepala Daerah
+  const [activeSubDropdown, setActiveSubDropdown] = useState(null); 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolledToHighlights, setIsScrolledToHighlights] = useState(false);
   const [isScrolledToStatistics, setIsScrolledToStatistics] = useState(false);
   const [isScrolledToPengumuman, setIsScrolledToPengumuman] = useState(false);
-  const [isAtFooter, setIsAtFooter] = useState(false); // Untuk deteksi posisi scroll di footer
-  const dropdownRef = useRef(null); // Ref untuk mendeteksi klik di luar dropdown
+  const [isAtFooter, setIsAtFooter] = useState(false); 
+  const dropdownRef = useRef(null); 
 
-  const location = useLocation(); // Menangkap lokasi halaman saat ini
+  const location = useLocation();
 
-  // Deteksi jika halaman yang sedang dibuka adalah homepage
+
   const isHomePage = location.pathname === '/';
 
   const handleDropdownClick = (dropdownName) => {
     setActiveDropdown(activeDropdown === dropdownName ? null : dropdownName);
-    setActiveSubDropdown(null); // Tutup subdropdown jika dropdown lain diklik
+    setActiveSubDropdown(null); 
   };
 
   const handleSubDropdownClick = (subDropdownName) => {
@@ -217,7 +218,7 @@ function Navbar() {
               <Link to="/agenda" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
                 Agenda
               </Link>
-              <Link to="/statistik" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
+              <Link to="/detailstatistik" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
                 Statistik
               </Link>
             </div>
