@@ -1,27 +1,25 @@
-/* eslint-disable-next-line no-unused-vars */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { MdEvent } from 'react-icons/md'; 
+import { MdEvent } from 'react-icons/md';
 
 function Agenda() {
   const [selectedMonth, setSelectedMonth] = useState('Juni');
   const [selectedYear, setSelectedYear] = useState('2023');
+  const [isMounted, setIsMounted] = useState(false);
 
-  const months = [
-    'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-  ];
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 
   const years = ['2024', '2023', '2022'];
 
   const events = {
-    'Agustus': [
-      { date: '17 Agustus', title: 'HUT Kemerdekaan RI' }
-    ],
-    'September': [
-      { date: '24 September', title: 'HUT Provinsi Kepulauan Riau' }
-    ]
+    Agustus: [{ date: '17 Agustus', title: 'HUT Kemerdekaan RI' }],
+    September: [{ date: '24 September', title: 'HUT Provinsi Kepulauan Riau' }],
   };
 
   const handleMonthClick = (month) => {
@@ -39,7 +37,7 @@ function Agenda() {
     <>
       <Navbar />
       <div className="min-h-screen bg-gray-50 pt-24 pb-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 transition-opacity duration-1000 ease-out ${isMounted ? 'opacity-100' : 'opacity-0'}`}>
           <div className="mb-8">
             <nav className="text-sm text-gray-500">
               <Link to="/">Beranda</Link> &bull;
@@ -55,19 +53,17 @@ function Agenda() {
                 );
               })}
             </nav>
-            <h1 className="text-4xl font-extrabold text-gray-800 mt-4">Event & Agenda</h1>
+            <h1 className={`text-4xl font-extrabold text-gray-800 mt-4 transition-transform transform ${isMounted ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'} duration-1000`}>Event & Agenda</h1>
           </div>
 
-          <div className="bg-white shadow-lg rounded-lg p-8">
+          <div className={`bg-white shadow-lg rounded-lg p-8 transition-transform transform ${isMounted ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} duration-1000 delay-200`}>
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-8">
               <h2 className="text-2xl font-bold mb-4 sm:mb-0">Jadwal Tahun {selectedYear}</h2>
-              <select
-                className="p-3 border border-gray-300 rounded-md text-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
-                value={selectedYear}
-                onChange={handleYearChange}
-              >
+              <select className="p-3 border border-gray-300 rounded-md text-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500" value={selectedYear} onChange={handleYearChange}>
                 {years.map((year) => (
-                  <option key={year} value={year}>{year}</option>
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
                 ))}
               </select>
             </div>
@@ -76,11 +72,7 @@ function Agenda() {
               {months.map((month) => (
                 <button
                   key={month}
-                  className={`px-4 py-2 rounded-md font-medium text-center transition ${
-                    selectedMonth === month
-                      ? 'bg-gray-800 text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-green-100'
-                  }`}
+                  className={`px-4 py-2 rounded-md font-medium text-center transition ${selectedMonth === month ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-600 hover:bg-green-100'}`}
                   onClick={() => handleMonthClick(month)}
                 >
                   {month}
@@ -104,7 +96,9 @@ function Agenda() {
                   </div>
                 ))
               ) : (
-                <p className="text-center">Tidak ada jadwal event atau agenda pada bulan {selectedMonth} {selectedYear}</p>
+                <p className="text-center">
+                  Tidak ada jadwal event atau agenda pada bulan {selectedMonth} {selectedYear}
+                </p>
               )}
             </div>
           </div>
