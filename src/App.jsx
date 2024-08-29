@@ -3,6 +3,7 @@ import HomePage from './pages/HomePages';
 import Sejarah from './pages/Sejarah';
 import VisiMisi from './pages/VisiMisi';
 import Agenda from './pages/Agenda';
+import DetailStatistik from './pages/DetailStatistik';
 import PerangkatDaerah from './pages/PerangkatDaerah';
 import LayananPublik from './pages/LayananPublik';
 import Berita from './pages/Berita';
