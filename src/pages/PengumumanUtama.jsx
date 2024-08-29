@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+/* eslint-disable-next-line no-unused-vars */
+import React, { useState, useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 function PengumumanUtama() {
   const announcements = [
@@ -29,6 +31,31 @@ function PengumumanUtama() {
 
   const [searchTerm, setSearchTerm] = useState(''); // State for search input
   const [filteredAnnouncements, setFilteredAnnouncements] = useState(announcements); // State for filtered announcements
+  const [isAnimated, setIsAnimated] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsAnimated(true);
+        }
+      },
+      {
+        threshold: 0.1, // Trigger animation when 10% of the section is visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   // Function to handle search input change
   const handleSearch = (event) => {
@@ -36,24 +63,31 @@ function PengumumanUtama() {
     setSearchTerm(term);
 
     // Filter announcements based on the search term
-    const filtered = announcements.filter((announcement) => announcement.title.toLowerCase().includes(term) || announcement.source.toLowerCase().includes(term));
+    const filtered = announcements.filter((announcement) =>
+      announcement.title.toLowerCase().includes(term) || announcement.source.toLowerCase().includes(term)
+    );
     setFilteredAnnouncements(filtered);
   };
 
   return (
     <div className="bg-gray-100 text-gray-900 min-h-screen flex flex-col">
       <Navbar />
-      {/* Header Section */}
-      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="py-20 mb-8">
-        <div className="container mx-auto px-6 text-center">
-          <h1 className="text-4xl font-bold mb-4">Pengumuman Resmi</h1>
+
+      {/* Breadcrumb and Title Section */}
+      <div className="bg-gray-50 pt-24 pb-8 text-center">
+        <div className="container mx-auto px-6">
+          <nav className="text-sm text-gray-500 mb-2">
+            <Link to="/" className="hover:underline">Beranda</Link> &bull;
+            <span className="ml-2">Pengumuman</span>
+          </nav>
+          <h1 className="text-4xl font-bold text-gray-800 mt-4">Pengumuman Resmi</h1>
           <p className="text-lg">Dapatkan informasi terbaru dari Pemerintah Provinsi Kepulauan Riau</p>
         </div>
-      </motion.div>
+      </div>
 
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }} className="container mx-auto px-6 flex flex-col lg:flex-row lg:gap-8">
+      <div ref={sectionRef} className="container mx-auto px-6 py-8 flex flex-col lg:flex-row lg:gap-8 transition-transform duration-700 ease-in-out">
         {/* Main Announcements List */}
-        <div className="w-full lg:w-8/12 mb-8">
+        <div className={`w-full lg:w-8/12 mb-8 transition-transform duration-700 ease-in-out ${isAnimated ? 'transform translate-y-0' : 'transform -translate-y-10'}`}>
           <h2 className="text-2xl font-semibold mb-4">Publikasi Pengumuman Resmi</h2>
           <div className="space-y-6">
             {filteredAnnouncements.map((announcement, index) => (
@@ -74,7 +108,7 @@ function PengumumanUtama() {
         </div>
 
         {/* Sidebar with Search */}
-        <div className="w-full lg:w-4/12 mb-8">
+        <div className={`w-full lg:w-4/12 mb-8 transition-transform duration-700 ease-in-out ${isAnimated ? 'transform translate-y-0' : 'transform -translate-y-10'}`}>
           <div className="bg-white rounded-lg shadow-md p-6">
             <h3 className="text-xl font-semibold mb-4">Pencarian Judul</h3>
             <input
@@ -86,7 +120,8 @@ function PengumumanUtama() {
             />
           </div>
         </div>
-      </motion.div>
+      </div>
+
       <Footer />
     </div>
   );

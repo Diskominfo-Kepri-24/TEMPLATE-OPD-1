@@ -8,7 +8,9 @@ import PerangkatDaerah from './pages/PerangkatDaerah';
 import LayananPublik from './pages/LayananPublik';
 import Berita from './pages/Berita';
 import PengumumanUtama from './pages/PengumumanUtama';
-import DetailStatistik from './pages/DetailStatistik';
+import FotoVideo from './pages/FotoVideo';
+import AsetMulti from './pages/AsetMulti';
+
 
 function App() {
   return (
@@ -23,7 +25,8 @@ function App() {
         <Route path="/layanan-publik" element={<LayananPublik />} />
         <Route path="/berita" element={<Berita />} />
         <Route path="/pengumuman" element={<PengumumanUtama />} />
-        <Route path="/detailstatistik" element={<DetailStatistik />} />
+        <Route path="/fotovideo" element={<FotoVideo />} />
+        <Route path="/aset-multimedia" element={<AsetMulti />} />
       </Routes>
     </Router>
   );

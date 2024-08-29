@@ -34,7 +34,7 @@ function Footer() {
           <h2 className="text-lg font-semibold mb-4">Jam Layanan</h2>
           <ul className="text-sm space-y-2">
             <li>Senin - Kamis: 08:00 s/d 16:00</li>
-            <li>Jumat: 08:00 s/d 15:00</li>
+            <li>Jumat: 08:00 s/d 15:30</li>
             <li>Sabtu - Minggu: Libur</li>
           </ul>
         </div>

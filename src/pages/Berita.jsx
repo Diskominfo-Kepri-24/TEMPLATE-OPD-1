@@ -1,4 +1,6 @@
+/* eslint-disable-next-line no-unused-vars */
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -43,17 +45,27 @@ function Berita() {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
 
-      <div className={`pt-24 pb-8 px-8 transition-opacity duration-1000 ease-out ${isMounted ? 'opacity-100' : 'opacity-0'}`}>
-        <h1 className="text-3xl font-bold text-center mb-12 text-gray-800 animate-slide-in">Berita</h1>
+      {/* Breadcrumb and Title Section */}
+      <div className="bg-gray-50 pt-24 pb-8 text-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <nav className="text-sm text-gray-500 mb-2">
+            <Link to="/" className="hover:underline">Beranda</Link> &bull;
+            <span className="ml-2">Berita</span>
+          </nav>
+          <h1 className={`text-3xl font-bold text-gray-800 mt-4 transition-opacity duration-700 ease-out ${isMounted ? 'opacity-100' : 'opacity-0'}`}>Berita</h1>
+        </div>
+      </div>
 
+      {/* Content Section */}
+      <div className={`pt-8 pb-8 px-8 transition-opacity duration-1000 ease-out ${isMounted ? 'opacity-100' : 'opacity-0'}`}>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* News Articles */}
-          <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className={`md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4 transition-transform duration-700 ease-in-out ${isMounted ? 'transform translate-y-0' : 'transform translate-y-10'}`}>
             {filteredArticles.map((article, index) => (
               <div
                 key={article.id}
-                className={`bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:bg-gray-100 cursor-pointer animate-fade-in`}
-                style={{ height: '280px', animationDelay: `${index * 0.1}s` }}
+                className={`bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:bg-gray-100 cursor-pointer`}
+                style={{ height: '280px', animationDelay: `${index * 0.1}s`, opacity: isMounted ? 1 : 0, transition: `opacity 0.5s ease ${index * 0.1}s` }}
               >
                 <img src={article.image} alt={article.title} className="w-full h-2/3 object-cover rounded-t-xl" />
                 <div className="p-3 h-1/3 overflow-hidden flex flex-col justify-between">
@@ -68,12 +80,12 @@ function Berita() {
           </div>
 
           {/* Sidebar for Popular Posts */}
-          <aside className="bg-white p-4 rounded-lg shadow-md border border-gray-200 flex flex-col justify-between animate-slide-in">
+          <aside className={`bg-white p-4 rounded-lg shadow-md border border-gray-200 flex flex-col justify-between transition-transform duration-700 ease-in-out ${isMounted ? 'transform translate-y-0' : 'transform translate-y-10'}`}>
             <div className="overflow-y-auto max-h-96">
               <h2 className="text-xl font-bold text-gray-800 mb-4">Popular posts</h2>
               <ul>
                 {popularPosts.map((post, index) => (
-                  <li key={post.id} className={`flex items-center mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded transition-transform transform hover:scale-105 animate-fade-in`} style={{ animationDelay: `${index * 0.1}s` }}>
+                  <li key={post.id} className={`flex items-center mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded transition-transform transform hover:scale-105`} style={{ opacity: isMounted ? 1 : 0, transition: `opacity 0.5s ease ${index * 0.1}s` }}>
                     <img src={post.image} alt={post.title} className="w-16 h-16 object-cover rounded mr-4" />
                     <div>
                       <h3 className="text-sm font-semibold text-gray-800">{post.title}</h3>

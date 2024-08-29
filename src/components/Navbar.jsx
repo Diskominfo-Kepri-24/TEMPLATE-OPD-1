@@ -272,7 +272,7 @@ function Navbar() {
             <div className="absolute right-0 mt-2 py-2 w-48 bg-white text-gray-900 rounded-lg shadow-lg z-10">
               {' '}
               {/* right-0 agar dropdown tidak keluar dari layar */}
-              <Link to="/foto-video" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
+              <Link to="/fotovideo" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
                 Foto & Video
               </Link>
               <Link to="/aset-multimedia" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
