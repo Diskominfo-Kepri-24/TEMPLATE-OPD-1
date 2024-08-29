@@ -79,6 +79,13 @@ function Pengumuman() {
           </Link>
         ))}
       </div>
+
+      {/* Lihat Pengumuman Button */}
+      <div className="text-center mt-12">
+        <Link to="/pengumuman">
+          <button className="bg-blue-500 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 transition duration-300">Lihat Pengumuman</button>
+        </Link>
+      </div>
     </div>
   );
 }

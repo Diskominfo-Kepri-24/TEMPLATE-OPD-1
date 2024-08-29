@@ -27,11 +27,12 @@ function HomePage() {
           <div className="grid grid-cols-4 gap-4 mb-8 mt-8">
             <Shortcut iconSrc="/assets/history.svg" label="Sejarah" link="/sejarah" />
             <Shortcut iconSrc="/assets/news.svg" label="Berita" link="/berita" />
-            <Shortcut iconSrc="/assets/service.svg" label="Layanan" link="/layanan" />
-            <Shortcut iconSrc="/assets/department.svg" label="Instansi" link="/instansi" />
+            <Shortcut iconSrc="/assets/service.svg" label="Layanan" link="/layanan-publik" />
+            <Shortcut iconSrc="/assets/department.svg" label="Instansi" link="/perangkat-daerah" />
             <Shortcut iconSrc="/assets/budget.svg" label="APBD" link="/apbd" />
             <Shortcut iconSrc="/assets/analytics.svg" label="IPKD" link="/ipkd" />
-            <Shortcut iconSrc="/assets/report.svg" label="Lapor" link="/lapor" />
+            <Shortcut iconSrc="/assets/report.svg" label="Lapor" link="https://kepri.lapor.go.id/" />
+
             <Shortcut iconSrc="/assets/ppid.svg" label="PPID" link="/ppid" />
           </div>
         </div>

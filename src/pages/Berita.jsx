@@ -44,13 +44,17 @@ function Berita() {
       <Navbar />
 
       <div className={`pt-24 pb-8 px-8 transition-opacity duration-1000 ease-out ${isMounted ? 'opacity-100' : 'opacity-0'}`}>
-        <h1 className="text-3xl font-bold text-center mb-12 text-gray-800">Berita</h1>
+        <h1 className="text-3xl font-bold text-center mb-12 text-gray-800 animate-slide-in">Berita</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* News Articles */}
           <div className="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {filteredArticles.map((article) => (
-              <div key={article.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:bg-gray-100 transition-transform transform hover:scale-105 cursor-pointer" style={{ height: '280px' }}>
+            {filteredArticles.map((article, index) => (
+              <div
+                key={article.id}
+                className={`bg-white rounded-xl shadow-lg overflow-hidden transition-transform transform hover:scale-105 hover:bg-gray-100 cursor-pointer animate-fade-in`}
+                style={{ height: '280px', animationDelay: `${index * 0.1}s` }}
+              >
                 <img src={article.image} alt={article.title} className="w-full h-2/3 object-cover rounded-t-xl" />
                 <div className="p-3 h-1/3 overflow-hidden flex flex-col justify-between">
                   <span className="inline-block bg-blue-200 text-blue-800 text-xs px-1.5 py-0.5 rounded-full mb-1 max-w-max">{article.category}</span>
@@ -64,12 +68,12 @@ function Berita() {
           </div>
 
           {/* Sidebar for Popular Posts */}
-          <aside className="bg-white p-4 rounded-lg shadow-md border border-gray-200 flex flex-col justify-between">
+          <aside className="bg-white p-4 rounded-lg shadow-md border border-gray-200 flex flex-col justify-between animate-slide-in">
             <div className="overflow-y-auto max-h-96">
               <h2 className="text-xl font-bold text-gray-800 mb-4">Popular posts</h2>
               <ul>
-                {popularPosts.map((post) => (
-                  <li key={post.id} className="flex items-center mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded">
+                {popularPosts.map((post, index) => (
+                  <li key={post.id} className={`flex items-center mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded transition-transform transform hover:scale-105 animate-fade-in`} style={{ animationDelay: `${index * 0.1}s` }}>
                     <img src={post.image} alt={post.title} className="w-16 h-16 object-cover rounded mr-4" />
                     <div>
                       <h3 className="text-sm font-semibold text-gray-800">{post.title}</h3>
@@ -87,7 +91,11 @@ function Berita() {
               <h3 className="text-lg font-bold text-gray-800 mb-2">Kategori</h3>
               <div className="flex flex-wrap gap-2 max-w-xs">
                 {categories.map((category) => (
-                  <button key={category} className={`px-4 py-1 text-sm rounded-full whitespace-nowrap ${selectedCategory === category ? 'bg-teal-500 text-white' : 'bg-gray-200 text-gray-700'}`} onClick={() => setSelectedCategory(category)}>
+                  <button
+                    key={category}
+                    className={`px-4 py-1 text-sm rounded-full whitespace-nowrap ${selectedCategory === category ? 'bg-teal-500 text-white' : 'bg-gray-200 text-gray-700'} transition-transform transform hover:scale-105`}
+                    onClick={() => setSelectedCategory(category)}
+                  >
                     {category}
                   </button>
                 ))}

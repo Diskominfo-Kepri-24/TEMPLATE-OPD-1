@@ -6,6 +6,7 @@ import Agenda from './pages/Agenda';
 import PerangkatDaerah from './pages/PerangkatDaerah';
 import LayananPublik from './pages/LayananPublik';
 import Berita from './pages/Berita';
+import PengumumanUtama from './pages/PengumumanUtama';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/perangkat-daerah" element={<PerangkatDaerah />} />
         <Route path="/layanan-publik" element={<LayananPublik />} />
         <Route path="/berita" element={<Berita />} />
+        <Route path="/pengumuman" element={<PengumumanUtama />} />
       </Routes>
     </Router>
   );
