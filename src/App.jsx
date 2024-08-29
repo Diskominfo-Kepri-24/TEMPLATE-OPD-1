@@ -5,6 +5,7 @@ import VisiMisi from './pages/VisiMisi';
 import Agenda from './pages/Agenda';
 import PerangkatDaerah from './pages/PerangkatDaerah';
 import LayananPublik from './pages/LayananPublik';
+import DetailStatistik from './pages/DetailStatistik';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/sejarah" element={<Sejarah />} />
         <Route path="/visi-misi" element={<VisiMisi />} />
         <Route path="/agenda" element={<Agenda />} />
+        <Route path="/detailstatistik" element={<DetailStatistik />} />
         <Route path="/perangkat-daerah" element={<PerangkatDaerah />} />
         <Route path="/layanan-publik" element={<LayananPublik />} />
       </Routes>
