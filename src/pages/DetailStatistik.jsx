@@ -145,11 +145,11 @@ function Statistics() {
                   </ul>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+            </div> 
+          </div> 
+        </div> 
+      </div> 
+      
       <Footer />
     </>
   );

@@ -129,7 +129,7 @@ function Agenda() {
       days.push(
         <div
           key={i}
-          className={`p-2 cursor-pointer ${hasEvent ? 'bg-green-100 hover:bg-green-200' : 'bg-white'} ${selectedDay === date ? 'bg-green-500 text-white' : ''} transition duration-300 ease-in-out`}
+          className={`p-2 cursor-pointer ${hasEvent ? 'bg-gray-100 hover:bg-gray-400' : 'bg-white'} ${selectedDay === date ? 'bg-gray-100 text-white' : ''} transition duration-300 ease-in-out`}
           onClick={() => handleDayClick(date, eventList)}
         >
           <div className={`text-center ${hasEvent ? 'font-bold' : 'text-gray-500'}`}>{i}</div>
@@ -150,7 +150,7 @@ function Agenda() {
       case 'Seminar':
         return <MdLocalLibrary className="h-6 w-6 text-blue-500" />;
       case 'Workshop':
-        return <MdWork className="h-6 w-6 text-green-500" />;
+        return <MdWork className="h-6 w-6 text-gray-800" />;
       case 'Perayaan':
         return <MdEvent className="h-6 w-6 text-red-500" />;
       default:
@@ -168,7 +168,9 @@ function Agenda() {
               <Link to="/">Beranda</Link> &bull;
               <span>&nbsp;Event & Agenda</span>
             </nav>
-            <h1 className={`text-4xl font-extrabold text-gray-800 mt-4 transition-transform transform ${isMounted ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'} duration-1000`}>Event & Agenda</h1>
+            <h1 className={`text-4xl font-extrabold text-gray-800 mt-4 transition-transform transform ${isAnimated ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0'} duration-1000`}>
+              Event & Agenda
+            </h1>
           </div>
 
           <div className={`bg-white shadow-lg rounded-lg p-8 transition-transform duration-700 ease-in-out ${isAnimated ? 'transform translate-y-0' : 'transform -translate-y-10'}`}>
@@ -176,7 +178,7 @@ function Agenda() {
               <h2 className="text-2xl font-bold mb-4 sm:mb-0">Jadwal Tahun {selectedYear}</h2>
               <div className="flex items-center space-x-4">
                 <select
-                  className="p-3 border border-gray-300 rounded-md text-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="p-3 border border-gray-300 rounded-md text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
                   value={selectedMonth}
                   onChange={handleMonthChange}
                 >
@@ -185,7 +187,7 @@ function Agenda() {
                   ))}
                 </select>
                 <select
-                  className="p-3 border border-gray-300 rounded-md text-gray-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="p-3 border border-gray-300 rounded-md text-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
                   value={selectedYear}
                   onChange={handleYearChange}
                 >
@@ -220,11 +222,11 @@ function Agenda() {
                   </div>
                 </div>
               ))}
-              <button
-                onClick={closePopup}
-                className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
+              <button 
+                onClick={closePopup} 
+                className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
               >
-                ✖
+                &times;
               </button>
             </div>
           </div>

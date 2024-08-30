@@ -16,7 +16,7 @@ const galleryItems = [
   {
     id: 2,
     type: 'image',
-    src: '/assets/photo1.jpg',
+    src: '/public/assets/2tahun.PNG',
     title: '2 Tahun Kepemimpinan Ansar-Marlin',
     description: '2 Tahun Kepemimpinan Ansar-Marlin Maju Bersama Terwujudnya Kepri Makmur, Berdaya Saing & Berbudaya',
     category: 'FOTO',
@@ -32,8 +32,8 @@ const galleryItems = [
   {
     id: 4,
     type: 'image',
-    src: '/assets/photo2.jpg',
-    title: 'Live: Peresmian Rumah Singgah Raja Ahmad Engku Haji Tua',
+    src: '/public/assets/rumahsinggah.PNG',
+    title: 'Peresmian Rumah Singgah Raja Ahmad Engku Haji Tua',
     description: 'Peresmian Rumah Singgah Raja Ahmad Engku Haji Tua dan Halal Bihalal Pemprov Kepri di Jakarta',
     category: 'FOTO',
   },
@@ -104,7 +104,7 @@ function FotoVideo() {
                   className="w-full h-48 object-cover transition-opacity duration-300 ease-in-out group-hover:opacity-80"
                 />
               )}
-              <div className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full text-[10px]">
+              <div className="absolute top-2 right-2 bg-gray-800 text-white text-xs px-2 py-1 rounded-full text-[10px]">
                 {item.category}
               </div>
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">

@@ -275,7 +275,7 @@ function Navbar() {
               <Link to="/fotovideo" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
                 Foto & Video
               </Link>
-              <Link to="/aset-multimedia" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
+              <Link to="/asetmedia" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">
                 Aset Multimedia
               </Link>
               <Link to="/ai-kepri" className="block px-4 py-2 hover:bg-[#173D80] hover:text-white">

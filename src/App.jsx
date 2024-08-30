@@ -9,7 +9,9 @@ import LayananPublik from './pages/LayananPublik';
 import Berita from './pages/Berita';
 import PengumumanUtama from './pages/PengumumanUtama';
 import FotoVideo from './pages/FotoVideo';
-import AsetMulti from './pages/AsetMulti';
+import AsetMedia from './pages/AsetMedia';
+import Gallery from './pages/Gallery';
+
 
 
 function App() {
@@ -20,12 +22,14 @@ function App() {
         <Route path="/sejarah" element={<Sejarah />} />
         <Route path="/visi-misi" element={<VisiMisi />} />
         <Route path="/agenda" element={<Agenda />} />
+        <Route path="/detailstatistik" element={<DetailStatistik />} />
         <Route path="/perangkat-daerah" element={<PerangkatDaerah />} />
         <Route path="/layanan-publik" element={<LayananPublik />} />
         <Route path="/berita" element={<Berita />} />
         <Route path="/pengumuman" element={<PengumumanUtama />} />
         <Route path="/fotovideo" element={<FotoVideo />} />
-        <Route path="/aset-multimedia" element={<AsetMulti />} />
+        <Route path="/asetmedia" element={<AsetMedia />} />
+        <Route path="/gallery/:id" element={<Gallery />} />
       </Routes>
     </Router>
   );
